@@ -12,6 +12,7 @@ public class RegisterRequest {
 
     public static class Res {
 
+        //String/ResultItem
         public String result;
 
         public static class ResultItem {

@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         /*imageListRequest();*/
         /*newsListRequest();*/
         /*newsDetailRequest();*/
-        focusListRequest();
-        /*userRegister();*/
+//        focusListRequest();
+        userRegister();
 
     }
 
