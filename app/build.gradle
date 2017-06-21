@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "github.retrofitplus"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(':library')
+
+    compile "com.squareup.retrofit2:retrofit:$retrofit2"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    compile "com.squareup.okhttp3:okhttp:$okHttp"
+    compile "io.reactivex.rxjava2:rxjava:$rxJava"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
+    compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
+}
