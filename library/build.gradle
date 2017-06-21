@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -20,4 +21,12 @@ dependencies {
 //    provided "com.squareup.okhttp3:okhttp:$okHttp"
     provided "io.reactivex.rxjava2:rxjava:$rxJava"
 //    provided "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+}
+publish {
+    userOrg = 'vihuela'
+    groupId = 'com.ricky'
+    artifactId = 'retrofitExceptionDispatcher'
+    publishVersion = '0.1'
+    desc = 'Retrofit Exception Dispatch under Rx'
+    website = 'https://github.com/vihuela/Retrofitplus'
 }
