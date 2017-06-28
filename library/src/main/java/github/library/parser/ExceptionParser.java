@@ -11,7 +11,7 @@ public abstract class ExceptionParser {
     public static String getMessageFromThrowable(Throwable e) {
         String message = "exception message is empty";
         if (e != null)
-            message = e.getClass().getSimpleName() + "：" + (!TextUtils.isEmpty(e.getMessage()) ? e.getMessage() : "");
+            message = e.getClass().getSimpleName() + (!TextUtils.isEmpty(e.getMessage()) ? "：" + e.getMessage() : "");
         return message;
     }
 
