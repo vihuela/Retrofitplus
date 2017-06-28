@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void request(View view) {
         /*imageListRequest();*/
-        /*newsListRequest();*/
+        newsListRequest();
         /*newsDetailRequest();*/
 //        focusListRequest();
-        userRegister();
+//        userRegister();
 
     }
 
@@ -173,7 +173,8 @@ public class MainActivity extends AppCompatActivity {
 
         int dynamicKey = 5;
         int dynamicGroup = 5;
-        apiProvider.getNewForLast(api.getNewForLast(), new DynamicKeyGroup(dynamicKey, dynamicGroup), new EvictDynamicKeyGroup(false))
+        boolean evict = false;
+        apiProvider.getNewForLast(api.getNewForLast(), new DynamicKeyGroup(dynamicKey, dynamicGroup), new EvictDynamicKeyGroup(evict))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Reply<NewsRequest.Res>>() {
