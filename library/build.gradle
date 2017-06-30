@@ -15,12 +15,8 @@ android {
 
 dependencies {
     provided "com.squareup.retrofit2:retrofit:$retrofit2"
-//    provided "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
     provided "com.squareup.retrofit2:converter-gson:$retrofit2"
-//    provided "com.squareup.okhttp3:logging-interceptor:$okHttp"
-//    provided "com.squareup.okhttp3:okhttp:$okHttp"
     provided "io.reactivex.rxjava2:rxjava:$rxJava"
-//    provided "io.reactivex.rxjava2:rxandroid:$rxAndroid"
 }
 publish {
     userOrg = 'vihuela'
