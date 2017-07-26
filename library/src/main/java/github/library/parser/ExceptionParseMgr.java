@@ -3,6 +3,8 @@ package github.library.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import github.library.utils.Error;
+import github.library.utils.ExceptionMatcher;
 import io.reactivex.exceptions.CompositeException;
 
 public enum ExceptionParseMgr {
@@ -64,6 +66,11 @@ public enum ExceptionParseMgr {
             parsers.add(0, parser);//customer exception priority
             connectionParse();
         }
+    }
+
+    //单独提供外部使用的解析方法
+    public Error isMatchException(Throwable e) {
+        return ExceptionMatcher.isMatchException(e);
     }
 
 }
