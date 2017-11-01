@@ -9,7 +9,7 @@ class UnknowExceptionParser extends ExceptionParser {
      */
     @Override
     protected boolean handler(Throwable e, IHandler handler) {
-        handler.onHandler(Error.UnKnow, getMessageFromThrowable(e));
+        handler.onHandler(Error.UnKnow, getMessageFromThrowable(Error.UnKnow, e));
         return true;
     }
 }

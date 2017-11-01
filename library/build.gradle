@@ -22,7 +22,7 @@ publish {
     userOrg = 'vihuela'
     groupId = 'com.ricky'
     artifactId = 'retrofitExceptionDispatcher'
-    publishVersion = '0.5'
+    publishVersion = '0.6'
     desc = 'Retrofit Exception Dispatch under Rx'
     website = 'https://github.com/vihuela/Retrofitplus'
 }

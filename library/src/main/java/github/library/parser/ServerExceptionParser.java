@@ -10,7 +10,7 @@ class ServerExceptionParser extends ExceptionParser {
     protected boolean handler(Throwable e, IHandler handler) {
         if (e != null) {
             if (HttpException.class.isAssignableFrom(e.getClass())) {
-                handler.onHandler(Error.Server, getMessageFromThrowable(e));
+                handler.onHandler(Error.Server, getMessageFromThrowable(Error.Server, e));
                 return true;
             }
         }

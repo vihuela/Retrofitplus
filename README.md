@@ -30,4 +30,4 @@ RefreshLayout 是针对Retrofit的ReactX下 **一句话** 异常分发的一个�
                         });`
 
 gradle
-> compile 'com.ricky:retrofitExceptionDispatcher:0.5'
+> compile 'com.ricky:retrofitExceptionDispatcher:0.6'

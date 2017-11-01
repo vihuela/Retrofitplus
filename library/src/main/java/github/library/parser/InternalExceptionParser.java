@@ -21,7 +21,7 @@ class InternalExceptionParser extends ExceptionParser {
                     JsonParseException.class.isAssignableFrom(e.getClass()) ||
                     JsonSyntaxException.class.isAssignableFrom(e.getClass()) ||
                     JSONException.class.isAssignableFrom(e.getClass())) {
-                handler.onHandler(Error.Internal, getMessageFromThrowable(e));
+                handler.onHandler(Error.Internal, getMessageFromThrowable(Error.Internal, e));
                 return true;
             }
         }

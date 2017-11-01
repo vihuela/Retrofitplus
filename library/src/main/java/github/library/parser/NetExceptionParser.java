@@ -1,5 +1,7 @@
 package github.library.parser;
 
+import android.text.TextUtils;
+
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -13,15 +15,16 @@ class NetExceptionParser extends ExceptionParser {
     @Override
     protected boolean handler(Throwable e, IHandler handler) {
         if (e != null) {
-            String s = getMessageFromThrowable(e);
-            if (Cons.IO_EXCEPTION.equalsIgnoreCase(s) || Cons.SOCKET_EXCEPTION.equalsIgnoreCase(s)) {
-                //cancel request trigger
-                return true;
+            if (!TextUtils.isEmpty(e.getMessage())) {
+                if (Cons.IO_EXCEPTION.equalsIgnoreCase(e.getMessage()) || Cons.SOCKET_EXCEPTION.equalsIgnoreCase(e.getMessage())) {
+                    //cancel request trigger
+                    return true;
+                }
             }
             if (UnknownHostException.class.isAssignableFrom(e.getClass()) ||
                     SocketException.class.isAssignableFrom(e.getClass()) ||
                     SocketTimeoutException.class.isAssignableFrom(e.getClass())) {
-                handler.onHandler(Error.NetWork, s);
+                handler.onHandler(Error.NetWork, getMessageFromThrowable(Error.NetWork, e));
                 return true;
             }
         }

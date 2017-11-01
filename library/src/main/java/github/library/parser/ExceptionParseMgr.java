@@ -5,6 +5,7 @@ import java.util.List;
 
 import github.library.utils.Error;
 import github.library.utils.ExceptionMatcher;
+import github.library.utils.IExceptionMessage;
 import io.reactivex.exceptions.CompositeException;
 
 public enum ExceptionParseMgr {
@@ -57,6 +58,13 @@ public enum ExceptionParseMgr {
     //Rx CompositeException 下仅回调首个错误
     public void isOnlyOneCallback(boolean isOnlyOneCallback) {
         this.isOnlyOneCallback = isOnlyOneCallback;
+    }
+
+    public IExceptionMessage iExceptionMessage;
+
+    //添加自定义消息解析
+    public void addCustomerMessageParser(IExceptionMessage message) {
+        iExceptionMessage = message;
     }
 
     //添加自定义异常解析

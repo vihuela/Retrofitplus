@@ -9,6 +9,7 @@ import java.io.File;
 import github.library.parser.ExceptionParseMgr;
 import github.library.parser.ExceptionParser;
 import github.library.utils.Error;
+import github.library.utils.IExceptionMessage;
 import github.retrofitplus.api.Api;
 import github.retrofitplus.api.ApiCacheProvider;
 import github.retrofitplus.api.convert.CustomerGsonConverterFactory;
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void request(View view) {
-        /*imageListRequest();*/
-        newsListRequest();
+        imageListRequest();
+       /* newsListRequest();*/
         /*newsDetailRequest();*/
 //        focusListRequest();
 //        userRegister();
@@ -240,6 +241,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void imageListRequest() {
+        ExceptionParseMgr.Instance.addCustomerMessageParser(new IExceptionMessage() {
+            @Override
+            public String onParseMessage(Error error, Throwable e) {
+                System.out.println();
+                return null;
+            }
+        });
         Observable<ImageListRequest.Res> imageList = api.getImageList(10, 1);
         imageList.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

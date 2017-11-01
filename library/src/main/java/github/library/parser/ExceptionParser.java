@@ -8,13 +8,6 @@ import github.library.utils.Error;
 public abstract class ExceptionParser {
     private ExceptionParser nextParser;
 
-    public static String getMessageFromThrowable(Throwable e) {
-        String message = "exception message is empty";
-        if (e != null)
-            message = e.getClass().getSimpleName() + (!TextUtils.isEmpty(e.getMessage()) ? "：" + e.getMessage() : "");
-        return message;
-    }
-
     /**
      * @param e       nullable
      * @param handler not be null
@@ -46,6 +39,21 @@ public abstract class ExceptionParser {
 
     public interface IHandler {
         void onHandler(Error error, String message);
+    }
+
+    final String getMessageFromThrowable(Error error, Throwable e) {
+        if (ExceptionParseMgr.Instance.iExceptionMessage != null) {
+            return ExceptionParseMgr.Instance.iExceptionMessage.onParseMessage(error, e);
+        } else {
+            return getDefaultMessage(e);
+        }
+    }
+
+    public static String getDefaultMessage(Throwable e) {
+        String message = "exception message is empty";
+        if (e != null)
+            message = e.getClass().getSimpleName() + (!TextUtils.isEmpty(e.getMessage()) ? "：" + e.getMessage() : "");
+        return message;
     }
 
 }
